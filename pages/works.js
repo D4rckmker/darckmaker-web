@@ -14,14 +14,15 @@ const Works = () => (
         Trabajos
       </Heading>
 
-        <SimpleGrid columns={[1, 1, 2]} gap={6}>
+      <SimpleGrid columns={[1, 1, 2]} gap={6}>
         <Section>
           <WorkGridItem
             id="valhalla-products"
             title="Valhalla Products"
             thumbnail={thumbValhalla}
           >
-            Microservicio backend para gestión de productos en Valhalla Gaming Store.
+            Microservicio backend para gestión de productos en Valhalla Gaming
+            Store.
           </WorkGridItem>
         </Section>
 
@@ -31,7 +32,8 @@ const Works = () => (
             title="Multillantas VC"
             thumbnail={thumbMultillantas}
           >
-            Aplicación web para gestión operativa y con paneles de administración.
+            Aplicación web para gestión operativa y con paneles de
+            administración.
           </WorkGridItem>
         </Section>
 
@@ -41,7 +43,8 @@ const Works = () => (
             title="Techtronic"
             thumbnail={thumbTechtronic}
           >
-            Sistema web administrativo para la gestión y visualización de información
+            Sistema web administrativo para la gestión y visualización de
+            información
           </WorkGridItem>
         </Section>
       </SimpleGrid>

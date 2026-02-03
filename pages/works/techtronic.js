@@ -35,10 +35,7 @@ const Work = () => (
 
         <ListItem>
           <Meta>Repositorio</Meta>
-          <Link
-            href="https://github.com/D4rckmker/Techtronic"
-            target="_blank"
-          >
+          <Link href="https://github.com/D4rckmker/Techtronic" target="_blank">
             GitHub <ExternalLinkIcon mx="2px" />
           </Link>
         </ListItem>
@@ -63,17 +60,17 @@ const Work = () => (
 
       <P>
         Techtronic es un sistema web orientado a la gestión y organización de
-        información, pensado para escenarios donde se requiere una interfaz clara,
-        estructurada y fácil de usar. El proyecto fue desarrollado como una solución
-        administrativa, priorizando la simplicidad visual y la correcta separación
-        entre lógica y presentación.
+        información, pensado para escenarios donde se requiere una interfaz
+        clara, estructurada y fácil de usar. El proyecto fue desarrollado como
+        una solución administrativa, priorizando la simplicidad visual y la
+        correcta separación entre lógica y presentación.
       </P>
 
       <P>
-        El enfoque principal estuvo en construir una aplicación comprensible para
-        usuarios finales, con pantallas limpias, navegación directa y componentes
-        familiares, evitando complejidad innecesaria y asegurando una experiencia
-        consistente en distintos dispositivos.
+        El enfoque principal estuvo en construir una aplicación comprensible
+        para usuarios finales, con pantallas limpias, navegación directa y
+        componentes familiares, evitando complejidad innecesaria y asegurando
+        una experiencia consistente en distintos dispositivos.
       </P>
       <Heading as="h4" fontSize={16} my={6}>
         Detalles técnicos
@@ -84,8 +81,8 @@ const Work = () => (
           MVC (.NET).
         </ListItem>
         <ListItem>
-          Implementación de lógica del lado servidor y conexión con base de datos
-          para persistencia de información.
+          Implementación de lógica del lado servidor y conexión con base de
+          datos para persistencia de información.
         </ListItem>
         <ListItem>
           Construcción de vistas utilizando Bootstrap para mantener consistencia
@@ -109,7 +106,6 @@ const Work = () => (
         src="/images/works/techtronic/techtronic_02.png"
         alt="Techtronic vista administrativa"
       />
-
     </Container>
   </Layout>
 )

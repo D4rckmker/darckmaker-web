@@ -2,16 +2,16 @@
  * ============================================================================
  * PARAGRAPH - PÁRRAFO ESTILIZADO
  * ============================================================================
- * 
+ *
  * Componente de párrafo con estilos tipográficos profesionales:
  * - text-align: justify → Alinea el texto a ambos lados
  * - text-indent → Sangría en la primera línea
  * - hyphens: auto → Guiones automáticos para mejor justificación
- * 
+ *
  * USO:
  * ```jsx
  * import P from '../components/paragraph'
- * 
+ *
  * <P>
  *   Tu texto largo aquí...
  * </P>

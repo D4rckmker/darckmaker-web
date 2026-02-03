@@ -1,8 +1,22 @@
-import { Container, Heading, Box, Text, Divider, useColorModeValue, Link, AspectRatio } from '@chakra-ui/react'
+import {
+  Container,
+  Heading,
+  Box,
+  Text,
+  Divider,
+  useColorModeValue,
+  Link,
+  AspectRatio
+} from '@chakra-ui/react'
 import NextLink from 'next/link'
 import Image from 'next/image'
 
-export default function PostLayout({ title, description, heroImage, children }) {
+export default function PostLayout({
+  title,
+  description,
+  heroImage,
+  children
+}) {
   const border = useColorModeValue('blackAlpha.200', 'whiteAlpha.300')
   const muted = useColorModeValue('gray.600', 'whiteAlpha.800')
 
@@ -22,7 +36,7 @@ export default function PostLayout({ title, description, heroImage, children }) 
           overflow="hidden"
           mb={6}
         >
-          <AspectRatio ratio={{ base: 3 / 2}}>
+          <AspectRatio ratio={{ base: 3 / 2 }}>
             <Box position="relative">
               <Image
                 src={heroImage}

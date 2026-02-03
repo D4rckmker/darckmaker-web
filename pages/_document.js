@@ -2,14 +2,14 @@
  * ============================================================================
  * _DOCUMENT.JS - ESTRUCTURA HTML BASE
  * ============================================================================
- * 
+ *
  * Este archivo personaliza el documento HTML que envuelve a toda la app.
  * Se renderiza SOLO en el servidor y es el lugar para:
- * 
+ *
  * 1. Modificar las etiquetas <html> y <body>
  * 2. Agregar scripts que deben cargarse antes del contenido
  * 3. Configurar el idioma del documento
- * 
+ *
  * IMPORTANTE: Este archivo NO se actualiza en navegación client-side.
  * Solo se ejecuta en el servidor durante el build o SSR.
  */
@@ -48,10 +48,10 @@ export default class Document extends NextDocument {
               Lee la preferencia guardada (cookie/localStorage) y aplica
               la clase correcta al body inmediatamente. */}
           <ColorModeScript initialColorMode={theme.config.initialColorMode} />
-          
+
           {/* Donde se monta la aplicación React */}
           <Main />
-          
+
           {/* Scripts de Next.js necesarios para la hidratación */}
           <NextScript />
         </body>

@@ -2,7 +2,7 @@
  * ============================================================================
  * LAYOUT DE ARTÍCULO (ARTICLE)
  * ============================================================================
- * 
+ *
  * Wrapper de contenido con animaciones de entrada/salida.
  * Usa SITE_CONFIG para el título de las páginas.
  */
@@ -22,7 +22,7 @@ const variants = {
 const Layout = ({ children, title }) => {
   // ✨ Usa SITE_CONFIG.name desde constants.js
   const fullTitle = title ? `${title} / ${SITE_CONFIG.name}` : null
-  
+
   return (
     <motion.article
       initial="hidden"
@@ -39,7 +39,7 @@ const Layout = ({ children, title }) => {
           <meta property="og:title" content={fullTitle} />
         </Head>
       )}
-      
+
       {children}
       <GridItemStyle />
     </motion.article>

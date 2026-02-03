@@ -2,9 +2,9 @@
  * ============================================================================
  * BIO - COMPONENTES DE BIOGRAFÍA/TIMELINE
  * ============================================================================
- * 
+ *
  * Componentes estilizados para mostrar una línea de tiempo en la biografía.
- * 
+ *
  * USO:
  * ```jsx
  * <BioSection>

@@ -2,10 +2,10 @@
  * ============================================================================
  * CONFIGURACIÓN DE NEXT.JS
  * ============================================================================
- * 
+ *
  * Este archivo controla el comportamiento del framework Next.js.
  * Cada opción está comentada para facilitar el entendimiento.
- * 
+ *
  * Documentación: https://nextjs.org/docs/app/api-reference/next-config-js
  */
 
@@ -31,12 +31,12 @@ const nextConfig = {
   images: {
     // Formatos modernos de imagen para mejor compresión
     formats: ['image/avif', 'image/webp'],
-    
+
     // Tamaños de dispositivo para responsive images
     deviceSizes: [640, 750, 828, 1080, 1200, 1920],
-    
+
     // Tamaños de imagen para el atributo 'sizes'
-    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384]
   },
 
   // ─────────────────────────────────────────────────────────────────────────

@@ -2,7 +2,7 @@
  * ============================================================================
  * LAYOUT PRINCIPAL (MAIN)
  * ============================================================================
- * 
+ *
  * Layout raíz de toda la aplicación. Se monta UNA SOLA VEZ en _app.js.
  * Los meta tags vienen de lib/constants.js para fácil mantenimiento.
  */
@@ -27,24 +27,24 @@ const Main = ({ children, router }) => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="description" content={SITE_CONFIG.description} />
         <meta name="author" content={SITE_CONFIG.author} />
-        
+
         {/* Favicons */}
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
-        
+
         {/* Twitter Cards */}
         <meta name="twitter:title" content={SITE_CONFIG.name} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content={SITE_CONFIG.handle} />
         <meta name="twitter:creator" content={SITE_CONFIG.handle} />
         <meta name="twitter:image" content={SITE_CONFIG.ogImage} />
-        
+
         {/* Open Graph */}
         <meta property="og:site_name" content={SITE_CONFIG.name} />
         <meta property="og:title" content={SITE_CONFIG.name} />
         <meta property="og:type" content="website" />
         <meta property="og:image" content={SITE_CONFIG.ogImage} />
-        
+
         <title>{SITE_CONFIG.name}</title>
       </Head>
 

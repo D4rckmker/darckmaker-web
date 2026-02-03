@@ -23,7 +23,7 @@ export default function PetBox({
     registryRef.current.set(id, data)
   }, [])
 
-  const unregister = useCallback((id) => {
+  const unregister = useCallback(id => {
     registryRef.current.delete(id)
   }, [])
 
@@ -38,10 +38,9 @@ export default function PetBox({
       setCats(prev => {
         if (prev.length >= maxCats) return prev
 
-        const id =
-          globalThis.crypto?.randomUUID
-            ? globalThis.crypto.randomUUID()
-            : String(Date.now() + Math.random())
+        const id = globalThis.crypto?.randomUUID
+          ? globalThis.crypto.randomUUID()
+          : String(Date.now() + Math.random())
 
         const colorIndex = Math.floor(rand(0, 4))
 
@@ -51,7 +50,7 @@ export default function PetBox({
             id,
             colorIndex,
             x: rand(0.08, 0.82),
-            y: rand(0.20, 0.72)
+            y: rand(0.2, 0.72)
           }
         ]
       })
