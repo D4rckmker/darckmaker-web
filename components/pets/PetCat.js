@@ -42,7 +42,7 @@ const ACTIONS = {
 }
 
 function pickSleepOrMove() {
-  return Math.random() < 0.20 ? 'sleep' : 'move'
+  return Math.random() < 0.2 ? 'sleep' : 'move'
 }
 
 function pickMoveDir() {
@@ -102,7 +102,7 @@ export default function PetCat({
 
     let isSleeping = true
 
-    const setAction = (name) => {
+    const setAction = name => {
       actionName = name
       action = ACTIONS[actionName]
       frameIdx = 0
@@ -226,7 +226,7 @@ export default function PetCat({
 
     let last = performance.now()
 
-    const tick = (t) => {
+    const tick = t => {
       if (!mounted) return
 
       const dt = Math.min(0.033, (t - last) / 1000)
@@ -248,7 +248,7 @@ export default function PetCat({
 
       if (action.move && !isHovering) {
         const pauseChance =
-          actionName === 'walkUp' || actionName === 'walkDown' ? 0.22 : 0.10
+          actionName === 'walkUp' || actionName === 'walkDown' ? 0.22 : 0.1
 
         if (Math.random() >= pauseChance) {
           let s = speed
@@ -266,18 +266,30 @@ export default function PetCat({
 
       if (x <= minX) {
         x = minX
-        if (actionName === 'walkLeft') { setAction('walkRight'); lastDir = 'right' }
+        if (actionName === 'walkLeft') {
+          setAction('walkRight')
+          lastDir = 'right'
+        }
       } else if (x >= maxX) {
         x = maxX
-        if (actionName === 'walkRight') { setAction('walkLeft'); lastDir = 'left' }
+        if (actionName === 'walkRight') {
+          setAction('walkLeft')
+          lastDir = 'left'
+        }
       }
 
       if (y <= minY) {
         y = minY
-        if (actionName === 'walkUp') { setAction('walkDown'); lastDir = 'down' }
+        if (actionName === 'walkUp') {
+          setAction('walkDown')
+          lastDir = 'down'
+        }
       } else if (y >= maxY) {
         y = maxY
-        if (actionName === 'walkDown') { setAction('walkUp'); lastDir = 'up' }
+        if (actionName === 'walkDown') {
+          setAction('walkUp')
+          lastDir = 'up'
+        }
       }
 
       if (!isHovering) {

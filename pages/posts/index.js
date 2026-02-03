@@ -4,16 +4,14 @@ import PostCard from '../../components/post-card'
 import { getAllPosts } from '../../lib/posts'
 import Layout from '../../components/layouts/article'
 
-
 const Posts = ({ posts }) => {
   return (
-      <Layout title="Publicaciones">
+    <Layout title="Publicaciones">
       <Container>
+        <Heading as="h3" fontSize={20} mb={4}>
+          Publicaciones
+        </Heading>
 
-          <Heading as="h3" fontSize={20} mb={4} >
-            Publicaciones
-          </Heading>
-       
         <SimpleGrid columns={[1, 1, 2]} gap={6}>
           {posts.map((p, idx) => (
             <Section key={p.slug} delay={0.08 + idx * 0.03}>
@@ -26,7 +24,7 @@ const Posts = ({ posts }) => {
                 meta={`${p.frontmatter.createdAt || ''} • ${p.readingTime}`}
               />
             </Section>
-            ))}
+          ))}
         </SimpleGrid>
       </Container>
     </Layout>

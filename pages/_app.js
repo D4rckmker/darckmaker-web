@@ -2,15 +2,15 @@
  * ============================================================================
  * _APP.JS - PUNTO DE ENTRADA DE LA APLICACIÓN
  * ============================================================================
- * 
+ *
  * Este archivo es el "wrapper" principal de toda la aplicación Next.js.
  * Se ejecuta en CADA página y es el lugar ideal para:
- * 
+ *
  * 1. Providers globales (Chakra, Context, etc.)
  * 2. Layouts persistentes (Navbar, Footer)
  * 3. Estilos globales
  * 4. Analytics
- * 
+ *
  * IMPORTANTE: El estado aquí persiste entre navegaciones de página.
  */
 
@@ -32,7 +32,7 @@ if (typeof window !== 'undefined') {
 
 /**
  * Componente principal de la aplicación
- * 
+ *
  * @param {Object} Component - El componente de página actual
  * @param {Object} pageProps - Props pasadas desde getServerSideProps/getStaticProps
  * @param {Object} router - Objeto router de Next.js para acceder a la ruta actual
@@ -47,14 +47,13 @@ function Website({ Component, pageProps, router }) {
     <Chakra cookies={pageProps.cookies}>
       {/* Carga las fuentes personalizadas (M PLUS Rounded 1c) */}
       <Fonts />
-      
+
       {/* ─────────────────────────────────────────────────────────────────────
           LAYOUT PRINCIPAL
           ─────────────────────────────────────────────────────────────────────
           Contiene: Navbar, Footer, PetBox (gatitos)
           Este layout es PERSISTENTE - no se desmonta al cambiar de página */}
       <Layout router={router}>
-        
         {/* ─────────────────────────────────────────────────────────────────────
             ANIMACIONES DE TRANSICIÓN
             ─────────────────────────────────────────────────────────────────────
@@ -78,7 +77,7 @@ function Website({ Component, pageProps, router }) {
               cuando cambia la URL, activando las animaciones */}
           <Component {...pageProps} key={router.route} />
         </AnimatePresence>
-        
+
         {/* Analytics de Vercel para tracking de visitas */}
         <Analytics />
       </Layout>

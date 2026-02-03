@@ -2,10 +2,10 @@
  * ============================================================================
  * GRID ITEMS - COMPONENTES DE TARJETA PARA GRIDS
  * ============================================================================
- * 
+ *
  * Componentes reutilizables para mostrar items en un grid.
  * Usados para la página de trabajos y links externos.
- * 
+ *
  * COMPONENTES:
  * - GridItem: Link externo con thumbnail (ej: canal de Telegram)
  * - WorkGridItem: Link interno a página de trabajo
@@ -31,7 +31,7 @@ const THUMB_RATIO = 1000 / 571
 /**
  * Tarjeta con link externo (abre en nueva pestaña)
  * Usado para enlaces como canal de Telegram, etc.
- * 
+ *
  * @param {string} href - URL del enlace
  * @param {string} title - Título del item
  * @param {StaticImageData} thumbnail - Imagen importada con next/image
@@ -54,18 +54,22 @@ export const GridItem = ({ children, href, title, thumbnail }) => (
           fill
           sizes="(max-width: 768px) 100vw, 50vw"
           style={{ objectFit: 'cover' }}
-          placeholder="blur"  // Muestra versión borrosa mientras carga
-          loading="lazy"      // Carga diferida
+          placeholder="blur" // Muestra versión borrosa mientras carga
+          loading="lazy" // Carga diferida
         />
       </Box>
 
       {/* Título con link */}
       <LinkOverlay href={href} target="_blank">
-        <Text mt={2} fontWeight="medium">{title}</Text>
+        <Text mt={2} fontWeight="medium">
+          {title}
+        </Text>
       </LinkOverlay>
 
       {/* Descripción */}
-      <Text fontSize={14} opacity={0.8}>{children}</Text>
+      <Text fontSize={14} opacity={0.8}>
+        {children}
+      </Text>
     </LinkBox>
   </Box>
 )
@@ -77,7 +81,7 @@ export const GridItem = ({ children, href, title, thumbnail }) => (
 /**
  * Tarjeta de trabajo que navega a una página interna
  * Usado en la página /works
- * 
+ *
  * @param {string} id - ID del trabajo (para construir la URL)
  * @param {string} category - Categoría (default: 'works')
  * @param {string} title - Título del trabajo
@@ -96,7 +100,7 @@ export const WorkGridItem = ({
     <LinkBox
       as={NextLink}
       href={`/${category}/${id}`}
-      scroll={false}  // Evita scroll automático
+      scroll={false} // Evita scroll automático
       cursor="pointer"
     >
       {/* Contenedor de imagen */}
@@ -128,7 +132,9 @@ export const WorkGridItem = ({
       </LinkOverlay>
 
       {/* Descripción */}
-      <Text fontSize={14} opacity={0.8}>{children}</Text>
+      <Text fontSize={14} opacity={0.8}>
+        {children}
+      </Text>
     </LinkBox>
   </Box>
 )

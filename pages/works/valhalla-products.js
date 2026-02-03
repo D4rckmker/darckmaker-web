@@ -22,7 +22,8 @@ const Work = () => (
 
       {/* 2) Subtítulo corto (para la lista de trabajos) */}
       <P>
-        Microservicio backend para gestión de productos en Valhalla Gaming Store.
+        Microservicio backend para gestión de productos en Valhalla Gaming
+        Store.
       </P>
 
       {/* 3) Metadatos */}
@@ -71,15 +72,15 @@ const Work = () => (
 
       <P>
         Valhalla Products es un microservicio desarrollado como parte de la
-        arquitectura backend de Valhalla Gaming Store. Su responsabilidad principal
-        es la gestión del catálogo de productos, sirviendo como fuente centralizada
-        de datos para otras partes del sistema.
+        arquitectura backend de Valhalla Gaming Store. Su responsabilidad
+        principal es la gestión del catálogo de productos, sirviendo como fuente
+        centralizada de datos para otras partes del sistema.
       </P>
 
       <P>
         El proyecto fue diseñado para integrarse dentro de un ecosistema de
-        microservicios, manteniendo independencia, claridad estructural y facilidad
-        de mantenimiento.
+        microservicios, manteniendo independencia, claridad estructural y
+        facilidad de mantenimiento.
       </P>
 
       <Heading as="h4" fontSize={16} my={6}>
@@ -88,17 +89,19 @@ const Work = () => (
 
       <UnorderedList ml={4} my={4}>
         <ListItem>
-          Microservicio desarrollado con Spring Boot siguiendo una arquitectura por
-          capas.
+          Microservicio desarrollado con Spring Boot siguiendo una arquitectura
+          por capas.
         </ListItem>
         <ListItem>
           Exposición de endpoints REST para operaciones CRUD sobre productos.
         </ListItem>
         <ListItem>
-          Persistencia de datos mediante JPA/Hibernate con base de datos relacional.
+          Persistencia de datos mediante JPA/Hibernate con base de datos
+          relacional.
         </ListItem>
         <ListItem>
-          Manejo de validaciones, excepciones y estructuras DTO para control de datos.
+          Manejo de validaciones, excepciones y estructuras DTO para control de
+          datos.
         </ListItem>
       </UnorderedList>
     </Container>

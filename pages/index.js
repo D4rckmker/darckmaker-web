@@ -2,14 +2,14 @@
  * ============================================================================
  * PÁGINA PRINCIPAL (HOME)
  * ============================================================================
- * 
+ *
  * Página de inicio del portfolio que muestra:
  * - Presentación personal
  * - Habilidades técnicas
  * - Biografía/Timeline
  * - Links a redes sociales
  * - Información de contacto
- * 
+ *
  * Los datos vienen de lib/constants.js para facilitar el mantenimiento.
  */
 
@@ -31,7 +31,12 @@ import {
   WrapItem
 } from '@chakra-ui/react'
 import { ChevronRightIcon, EmailIcon } from '@chakra-ui/icons'
-import { IoLogoTwitter, IoLogoGithub, IoLogoInstagram, IoLogoLinkedin } from 'react-icons/io5'
+import {
+  IoLogoTwitter,
+  IoLogoGithub,
+  IoLogoInstagram,
+  IoLogoLinkedin
+} from 'react-icons/io5'
 
 // Componentes locales
 import Paragraph from '../components/paragraph'
@@ -95,7 +100,7 @@ const SocialLink = ({ href, icon, label }) => (
 const Home = () => {
   // Colores según el tema (extraídos para evitar llamar hooks dentro del JSX)
   const boxBg = useColorModeValue('whiteAlpha.500', 'whiteAlpha.200')
-  
+
   return (
     <Layout>
       <Container>
@@ -163,17 +168,17 @@ const Home = () => {
             Trabajo
           </Heading>
           <Paragraph>
-            Soy un Desarrollador de Software Junior con enfoque en desarrollo iOS,
-            egresado de Computación e Informática, con experiencia práctica en la
-            creación de aplicaciones móviles y soluciones de software orientadas a
-            necesidades reales de negocio.
+            Soy un Desarrollador de Software Junior con enfoque en desarrollo
+            iOS, egresado de Computación e Informática, con experiencia práctica
+            en la creación de aplicaciones móviles y soluciones de software
+            orientadas a necesidades reales de negocio.
           </Paragraph>
           <Paragraph>
             He desarrollado aplicaciones iOS utilizando Swift y he trabajado con
             APIs REST y tecnologías backend. También tengo experiencia con
-            herramientas empresariales como SAP y Microsoft Excel para la gestión
-            y análisis de información, además de conocimientos en diseño de
-            interfaces y desarrollo centrado en el usuario.
+            herramientas empresariales como SAP y Microsoft Excel para la
+            gestión y análisis de información, además de conocimientos en diseño
+            de interfaces y desarrollo centrado en el usuario.
           </Paragraph>
           <Paragraph>
             En proyectos y entornos de trabajo, he fortalecido mi capacidad para
@@ -209,7 +214,11 @@ const Home = () => {
           <SkillGroup title="Desarrollo móvil" skills={SKILLS.movil} />
           <SkillGroup title="Backend / Web" skills={SKILLS.backend} />
           <SkillGroup title="Herramientas" skills={SKILLS.herramientas} />
-          <SkillGroup title="Habilidades interpersonales" skills={SKILLS.blandas} isLast />
+          <SkillGroup
+            title="Habilidades interpersonales"
+            skills={SKILLS.blandas}
+            isLast
+          />
         </Section>
 
         {/* ─────────────────────────────────────────────────────────────────
@@ -229,7 +238,7 @@ const Home = () => {
               {item.text}
             </BioSection>
           ))}
-          
+
           {/* Año actual dinámico (siempre muestra el año en curso) */}
           <BioSection>
             <BioYear>{new Date().getFullYear()}</BioYear>
@@ -245,8 +254,8 @@ const Home = () => {
             Intereses
           </Heading>
           <Paragraph>
-            Desarrollo iOS, construcción de productos, buenas prácticas de código,
-            diseño de interfaces, aprendizaje continuo y tecnología.
+            Desarrollo iOS, construcción de productos, buenas prácticas de
+            código, diseño de interfaces, aprendizaje continuo y tecnología.
           </Paragraph>
         </Section>
 
@@ -261,25 +270,25 @@ const Home = () => {
           </Heading>
 
           <List>
-            <SocialLink 
-              href={SOCIAL_LINKS.linkedin} 
-              icon={<IoLogoLinkedin />} 
-              label="David Q. Salas" 
+            <SocialLink
+              href={SOCIAL_LINKS.linkedin}
+              icon={<IoLogoLinkedin />}
+              label="David Q. Salas"
             />
-            <SocialLink 
-              href={SOCIAL_LINKS.github} 
-              icon={<IoLogoGithub />} 
-              label="@D4rckmker" 
+            <SocialLink
+              href={SOCIAL_LINKS.github}
+              icon={<IoLogoGithub />}
+              label="@D4rckmker"
             />
-            <SocialLink 
-              href={SOCIAL_LINKS.instagram} 
-              icon={<IoLogoInstagram />} 
-              label="@Darckmaker.ig" 
+            <SocialLink
+              href={SOCIAL_LINKS.instagram}
+              icon={<IoLogoInstagram />}
+              label="@Darckmaker.ig"
             />
-            <SocialLink 
-              href={SOCIAL_LINKS.twitter} 
-              icon={<IoLogoTwitter />} 
-              label="@DarckmakerX" 
+            <SocialLink
+              href={SOCIAL_LINKS.twitter}
+              icon={<IoLogoTwitter />}
+              label="@DarckmakerX"
             />
           </List>
 
@@ -289,8 +298,7 @@ const Home = () => {
               href={SOCIAL_LINKS.telegram}
               title="Canal de Telegram"
               thumbnail={thumbTelegram}
-            >
-            </GridItem>
+            ></GridItem>
           </SimpleGrid>
 
           {/* ─────────────────────────────────────────────────────────────────
@@ -301,7 +309,12 @@ const Home = () => {
           </Heading>
           <p>
             Este sitio web se basa en el trabajo de{' '}
-            <Link as={NextLink} href="https://www.craftz.dog/" passHref scroll={false}>
+            <Link
+              as={NextLink}
+              href="https://www.craftz.dog/"
+              passHref
+              scroll={false}
+            >
               Takuya Matsuyama
             </Link>
           </p>
@@ -314,8 +327,8 @@ const Home = () => {
             Contacto
           </Heading>
           <p>
-            Si deseas contactarme para oportunidades laborales o proyectos, puedes
-            escribirme por correo.
+            Si deseas contactarme para oportunidades laborales o proyectos,
+            puedes escribirme por correo.
           </p>
 
           <Box align="center" my={4}>

@@ -2,10 +2,10 @@
  * ============================================================================
  * POST CARD - TARJETA DE VISTA PREVIA DE POST
  * ============================================================================
- * 
+ *
  * Componente que muestra una vista previa de un post del blog.
  * Usado en la página /posts para listar todos los posts.
- * 
+ *
  * Características:
  * - Imagen hero con aspect ratio 16:9
  * - Título, descripción y fecha
@@ -30,7 +30,7 @@ import {
 
 /**
  * Componente PostCard
- * 
+ *
  * @param {string} slug - Identificador único del post (para la URL)
  * @param {string} title - Título del post
  * @param {string} description - Descripción corta
@@ -38,7 +38,14 @@ import {
  * @param {string[]} tags - Array de etiquetas
  * @param {string} meta - Información adicional (fecha + tiempo de lectura)
  */
-export default function PostCard({ slug, title, description, heroImage, tags, meta }) {
+export default function PostCard({
+  slug,
+  title,
+  description,
+  heroImage,
+  tags,
+  meta
+}) {
   // ─────────────────────────────────────────────────────────────────────────
   // COLORES SEGÚN EL TEMA
   // ─────────────────────────────────────────────────────────────────────────
@@ -57,8 +64,8 @@ export default function PostCard({ slug, title, description, heroImage, tags, me
       overflow="hidden"
       // Transición suave para el efecto hover
       transition="all 0.2s ease"
-      _hover={{ 
-        transform: 'translateY(-2px)', 
+      _hover={{
+        transform: 'translateY(-2px)',
         borderColor: borderHover,
         shadow: 'lg'
       }}

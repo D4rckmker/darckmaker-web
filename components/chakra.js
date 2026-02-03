@@ -2,15 +2,15 @@
  * ============================================================================
  * CHAKRA PROVIDER WRAPPER
  * ============================================================================
- * 
+ *
  * Este componente envuelve la aplicación con el ChakraProvider y configura
  * la persistencia del tema (claro/oscuro) usando cookies.
- * 
+ *
  * ¿Por qué cookies en lugar de localStorage?
  * - Las cookies se envían al servidor en cada request
  * - Esto permite renderizar el tema correcto en SSR (Server Side Rendering)
  * - Evita el "flash" de tema incorrecto al cargar la página
- * 
+ *
  * IMPORTANTE: Cada página que use SSR debe exportar getServerSideProps
  * desde este archivo para que el tema funcione correctamente.
  */
@@ -24,7 +24,7 @@ import theme from '../lib/theme'
 
 /**
  * Componente Chakra Provider
- * 
+ *
  * @param {string} cookies - String de cookies del request (solo en SSR)
  * @param {ReactNode} children - Componentes hijos
  */
@@ -55,16 +55,16 @@ export default function Chakra({ cookies, children }) {
  * ============================================================================
  * GET SERVER SIDE PROPS (para exportar en cada página)
  * ============================================================================
- * 
+ *
  * Esta función se ejecuta en el servidor antes de renderizar la página.
  * Lee las cookies del request y las pasa como props a la página.
- * 
+ *
  * USO EN PÁGINAS:
  * ```js
  * // Al final de cada página que use SSR:
  * export { getServerSideProps } from '../components/chakra'
  * ```
- * 
+ *
  * Esto asegura que el tema se renderice correctamente desde el servidor.
  */
 export async function getServerSideProps({ req }) {

@@ -2,7 +2,7 @@
  * ============================================================================
  * NAVBAR - BARRA DE NAVEGACIÓN
  * ============================================================================
- * 
+ *
  * Barra de navegación fija en la parte superior de la página.
  * Los items de navegación vienen de lib/constants.js
  */
@@ -38,7 +38,7 @@ import { NAV_ITEMS, SOCIAL_LINKS } from '../lib/constants'
 const LinkItem = ({ href, path, target, children, ...props }) => {
   const active = path === href
   const inactiveColor = useColorModeValue('gray.800', 'whiteAlpha.900')
-  
+
   return (
     <Link
       as={NextLink}
@@ -111,7 +111,7 @@ const Navbar = ({ path, ...props }) => {
               {item.label}
             </LinkItem>
           ))}
-          
+
           {/* Link externo al código fuente */}
           <LinkItem
             target="_blank"
@@ -144,15 +144,19 @@ const Navbar = ({ path, ...props }) => {
                 <MenuItem as={MenuLink} href="/">
                   Sobre mí
                 </MenuItem>
-                
+
                 {/* ✨ Items dinámicos desde constants.js */}
                 {NAV_ITEMS.map(item => (
                   <MenuItem key={item.href} as={MenuLink} href={item.href}>
                     {item.label}
                   </MenuItem>
                 ))}
-                
-                <MenuItem as={Link} href={SOCIAL_LINKS.sourceCode} target="_blank">
+
+                <MenuItem
+                  as={Link}
+                  href={SOCIAL_LINKS.sourceCode}
+                  target="_blank"
+                >
                   Código Fuente
                 </MenuItem>
               </MenuList>

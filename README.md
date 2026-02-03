@@ -8,12 +8,12 @@ Portfolio personal de **David Q. Salas**, desarrollador iOS y Software.
 
 ## Stack Tecnológico
 
-| Tecnología | Uso |
-|------------|-----|
-| [Next.js 14](https://nextjs.org/) | Framework React con SSR/SSG |
-| [Chakra UI](https://chakra-ui.com/) | Sistema de diseño y componentes |
-| [Framer Motion](https://www.framer.com/motion/) | Animaciones fluidas |
-| [MDX](https://mdxjs.com/) | Posts del blog en Markdown |
+| Tecnología                                      | Uso                             |
+| ----------------------------------------------- | ------------------------------- |
+| [Next.js 14](https://nextjs.org/)               | Framework React con SSR/SSG     |
+| [Chakra UI](https://chakra-ui.com/)             | Sistema de diseño y componentes |
+| [Framer Motion](https://www.framer.com/motion/) | Animaciones fluidas             |
+| [MDX](https://mdxjs.com/)                       | Posts del blog en Markdown      |
 
 ---
 
@@ -23,7 +23,7 @@ Portfolio personal de **David Q. Salas**, desarrollador iOS y Software.
 darckmaker-web/
 ├── 📂 components/          # Componentes React reutilizables
 │   ├── 📂 layouts/         # Layouts de página (main, article)
-│   ├── 📂 pets/            # Gatitos animados 
+│   ├── 📂 pets/            # Gatitos animados
 │   ├── 📂 icons/           # Iconos SVG personalizados
 │   ├── navbar.js           # Barra de navegación
 │   ├── chakra.js           # Provider de Chakra UI
@@ -57,7 +57,8 @@ darckmaker-web/
 ## Comenzar
 
 ### Requisitos previos
-- Node.js 18+ 
+
+- Node.js 18+
 - npm o yarn
 
 ### Instalación
@@ -78,13 +79,13 @@ El sitio estará disponible en `http://localhost:3000`
 
 ### Scripts disponibles
 
-| Comando | Descripción |
-|---------|-------------|
-| `npm run dev` | Servidor de desarrollo |
-| `npm run build` | Build de producción |
-| `npm run start` | Servidor de producción |
-| `npm run lint` | Verificar código con ESLint |
-| `npm run prettier` | Formatear código |
+| Comando            | Descripción                 |
+| ------------------ | --------------------------- |
+| `npm run dev`      | Servidor de desarrollo      |
+| `npm run build`    | Build de producción         |
+| `npm run start`    | Servidor de producción      |
+| `npm run lint`     | Verificar código con ESLint |
+| `npm run prettier` | Formatear código            |
 
 ---
 
@@ -94,11 +95,11 @@ El sitio estará disponible en `http://localhost:3000`
 
 ```mdx
 ---
-title: "Mi nuevo post"
-description: "Una breve descripción"
-createdAt: "2024-01-15"
-tags: ["tag1", "tag2"]
-heroImage: "/images/posts/mi-imagen.jpg"
+title: 'Mi nuevo post'
+description: 'Una breve descripción'
+createdAt: '2024-01-15'
+tags: ['tag1', 'tag2']
+heroImage: '/images/posts/mi-imagen.jpg'
 ---
 
 ## Contenido en Markdown
@@ -118,12 +119,13 @@ El tema se configura en `lib/theme.js`:
 
 ```js
 const config = {
-  initialColorMode: 'dark',    // 'light', 'dark', o 'system'
-  useSystemColorMode: true     // Respetar preferencia del SO
+  initialColorMode: 'dark', // 'light', 'dark', o 'system'
+  useSystemColorMode: true // Respetar preferencia del SO
 }
 ```
 
 Colores principales:
+
 - **Modo claro**: `#f0e7db` (beige)
 - **Modo oscuro**: `#202023` (gris oscuro)
 - **Acento**: `#88ccca` (teal)
@@ -139,7 +141,7 @@ _app.js (Chakra Provider + Layout Principal)
     │
     ├── Layout (main.js)
     │   ├── Navbar
-    │   ├── PetBox 
+    │   ├── PetBox
     │   └── Footer
     │
     └── AnimatePresence
@@ -159,6 +161,7 @@ El tema se persiste usando cookies para evitar el "flash" de tema incorrecto:
 ## Sobre los Gatitos
 
 Los gatitos en la página principal son sprites animados que:
+
 - Caminan en direcciones aleatorias
 - Duermen ocasionalmente
 - Reaccionan al hover (olfatean)

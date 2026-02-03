@@ -23,11 +23,20 @@ function MarkdownContent({ content }) {
     <Box
       className="markdown-body"
       sx={{
-        'p': { mb: 5, lineHeight: '1.8' },
-        'h2': { fontSize: '2xl', fontWeight: 'bold', mt: 8, mb: 3 },
-        'h3': { fontSize: 'xl', fontWeight: 'bold', mt: 6, mb: 3 },
-        'img': { borderRadius: 'xl', borderWidth: '1px', borderColor: border, mb: 6 },
-        'a': { color: linkColor, textDecoration: 'underline', textUnderlineOffset: '3px' }
+        p: { mb: 5, lineHeight: '1.8' },
+        h2: { fontSize: '2xl', fontWeight: 'bold', mt: 8, mb: 3 },
+        h3: { fontSize: 'xl', fontWeight: 'bold', mt: 6, mb: 3 },
+        img: {
+          borderRadius: 'xl',
+          borderWidth: '1px',
+          borderColor: border,
+          mb: 6
+        },
+        a: {
+          color: linkColor,
+          textDecoration: 'underline',
+          textUnderlineOffset: '3px'
+        }
       }}
     >
       <ReactMarkdown
@@ -83,12 +92,12 @@ export default function PostPage({ post }) {
 
 export async function getServerSideProps({ params, req }) {
   const slugs = getPostSlugs().map(s => s.replace(/\.mdx$/, ''))
-  
+
   // Si el slug no existe, retornar 404
   if (!slugs.includes(params.slug)) {
     return { notFound: true }
   }
-  
+
   const post = getPostBySlug(params.slug)
   return {
     props: {

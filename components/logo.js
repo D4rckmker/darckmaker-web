@@ -2,10 +2,10 @@
  * ============================================================================
  * LOGO - LOGOTIPO DE LA MARCA
  * ============================================================================
- * 
+ *
  * Componente del logo que aparece en el Navbar.
  * Incluye un icono de huella y el nombre "Darckmaker".
- * 
+ *
  * El icono tiene una animación de rotación al hacer hover.
  */
 
@@ -44,13 +44,13 @@ const LogoBox = styled.span`
 const Logo = () => {
   // Color del texto según el tema
   const textColor = useColorModeValue('gray.800', 'whiteAlpha.900')
-  
+
   return (
     <Link href="/" scroll={false}>
       <LogoBox>
         {/* Icono de huella (SVG personalizado) */}
         <FootprintIcon />
-        
+
         {/* Nombre de la marca */}
         <Text
           color={textColor}
