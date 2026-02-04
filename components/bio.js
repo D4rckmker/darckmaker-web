@@ -23,8 +23,7 @@ import styled from '@emotion/styled'
  * donde el año sobresale a la izquierda del texto
  */
 export const BioSection = styled(Box)`
-  padding-left: 3.4em;
-  text-indent: -3.4em;
+  display: flex;
   margin-bottom: 0.5em;
 `
 
@@ -34,4 +33,5 @@ export const BioSection = styled(Box)`
 export const BioYear = styled.span`
   font-weight: bold;
   margin-right: 1em;
+  min-width: 3.5em;
 `

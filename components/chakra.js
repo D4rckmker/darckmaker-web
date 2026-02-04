@@ -11,8 +11,7 @@
  * - Esto permite renderizar el tema correcto en SSR (Server Side Rendering)
  * - Evita el "flash" de tema incorrecto al cargar la página
  *
- * IMPORTANTE: Cada página que use SSR debe exportar getServerSideProps
- * desde este archivo para que el tema funcione correctamente.
+
  */
 
 import {
@@ -65,7 +64,7 @@ export default function Chakra({ cookies, children }) {
  * export { getServerSideProps } from '../components/chakra'
  * ```
  *
- * Esto asegura que el tema se renderice correctamente desde el servidor.
+ * Esto asegura que el tema y el idioma se rendericen correctamente desde el servidor.
  */
 export async function getServerSideProps({ req }) {
   return {

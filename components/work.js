@@ -14,6 +14,7 @@
 import NextLink from 'next/link'
 import { Heading, Box, Image, Link, Badge } from '@chakra-ui/react'
 import { ChevronRightIcon } from '@chakra-ui/icons'
+import { useTranslation } from '../lib/translation-context'
 
 /**
  * Título con breadcrumb de navegación
@@ -21,25 +22,29 @@ import { ChevronRightIcon } from '@chakra-ui/icons'
  *
  * @param {ReactNode} children - Título del trabajo (puede incluir Badge)
  */
-export const Title = ({ children }) => (
-  <Box mb={4}>
-    {/* Link de regreso a la lista de trabajos */}
-    <Link as={NextLink} href="/works">
-      Trabajos
-    </Link>
+export const Title = ({ children }) => {
+  const { t } = useTranslation()
 
-    {/* Separador */}
-    <span>
-      {' '}
-      <ChevronRightIcon />{' '}
-    </span>
+  return (
+    <Box mb={4}>
+      {/* Link de regreso a la lista de trabajos */}
+      <Link as={NextLink} href="/works">
+        {t('navbar.works')}
+      </Link>
 
-    {/* Título del trabajo */}
-    <Heading display="inline-block" as="h3" fontSize={20}>
-      {children}
-    </Heading>
-  </Box>
-)
+      {/* Separador */}
+      <span>
+        {' '}
+        <ChevronRightIcon />{' '}
+      </span>
+
+      {/* Título del trabajo */}
+      <Heading display="inline-block" as="h3" fontSize={20}>
+        {children}
+      </Heading>
+    </Box>
+  )
+}
 
 /**
  * Imagen del proyecto con bordes redondeados

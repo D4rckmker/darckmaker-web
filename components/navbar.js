@@ -29,7 +29,10 @@ import ThemeToggleButton from './theme-toggle-button'
 import { IoLogoGithub } from 'react-icons/io5'
 
 // ✨ Constantes centralizadas
-import { NAV_ITEMS, SOCIAL_LINKS } from '../lib/constants'
+import { SOCIAL_LINKS } from '../lib/constants'
+import { useTranslation } from '../lib/translation-context'
+import AnimatedText from './animated-text'
+import LanguageToggleButton from './language-toggle-button'
 
 // ─────────────────────────────────────────────────────────────────────────────
 // COMPONENTE LINK ITEM (para navegación desktop)
@@ -70,6 +73,13 @@ MenuLink.displayName = 'MenuLink'
 // ─────────────────────────────────────────────────────────────────────────────
 
 const Navbar = ({ path, ...props }) => {
+  const { t } = useTranslation()
+
+  // Items de navegación dinámicos
+  const navItems = [
+    { href: '/works', label: t('navbar.works') },
+    { href: '/posts', label: t('navbar.posts') }
+  ]
   return (
     <Box
       position="fixed"
@@ -105,10 +115,10 @@ const Navbar = ({ path, ...props }) => {
           mt={{ base: 4, md: 0 }}
           spacing={2}
         >
-          {/* ✨ Links dinámicos desde constants.js */}
-          {NAV_ITEMS.map(item => (
+          {/* ✨ Links dinámicos con traducciones */}
+          {navItems.map(item => (
             <LinkItem key={item.href} href={item.href} path={path}>
-              {item.label}
+              <AnimatedText>{item.label}</AnimatedText>
             </LinkItem>
           ))}
 
@@ -123,13 +133,14 @@ const Navbar = ({ path, ...props }) => {
             pl={2}
           >
             <IoLogoGithub />
-            Código Fuente
+            <AnimatedText>{t('navbar.source')}</AnimatedText>
           </LinkItem>
         </Stack>
 
         {/* SECCIÓN DERECHA */}
         <Box flex={1} align="right">
           <ThemeToggleButton />
+          <LanguageToggleButton ml={2} />
 
           {/* MENÚ MÓVIL */}
           <Box ml={2} display={{ base: 'inline-block', md: 'none' }}>
@@ -138,17 +149,17 @@ const Navbar = ({ path, ...props }) => {
                 as={IconButton}
                 icon={<HamburgerIcon />}
                 variant="outline"
-                aria-label="Abrir menú de navegación"
+                aria-label={t('navbar.menuAriaLabel')}
               />
               <MenuList>
                 <MenuItem as={MenuLink} href="/">
-                  Sobre mí
+                  <AnimatedText>{t('navbar.about')}</AnimatedText>
                 </MenuItem>
 
-                {/* ✨ Items dinámicos desde constants.js */}
-                {NAV_ITEMS.map(item => (
+                {/* ✨ Items dinámicos con traducciones */}
+                {navItems.map(item => (
                   <MenuItem key={item.href} as={MenuLink} href={item.href}>
-                    {item.label}
+                    <AnimatedText>{item.label}</AnimatedText>
                   </MenuItem>
                 ))}
 
@@ -157,7 +168,8 @@ const Navbar = ({ path, ...props }) => {
                   href={SOCIAL_LINKS.sourceCode}
                   target="_blank"
                 >
-                  Código Fuente
+                  <IoLogoGithub style={{ marginRight: 8 }} />
+                  <AnimatedText>{t('navbar.source')}</AnimatedText>
                 </MenuItem>
               </MenuList>
             </Menu>
