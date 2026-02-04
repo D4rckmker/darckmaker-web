@@ -11,102 +11,93 @@ import Layout from '../../components/layouts/article'
 import { ExternalLinkIcon } from '@chakra-ui/icons'
 import { Title, WorkImage, Meta } from '../../components/work'
 import P from '../../components/paragraph'
+import { useTranslation } from '../../lib/translation-context'
+import AnimatedText from '../../components/animated-text'
 
-const Work = () => (
-  <Layout title="Valhalla Products">
-    <Container>
-      {/* 1) Título + año */}
-      <Title>
-        Valhalla Products <Badge>2023</Badge>
-      </Title>
+const Work = () => {
+  const { t } = useTranslation()
+  const work = t('works.projects.valhalla')
+  const labels = t('works.metaLabels')
 
-      {/* 2) Subtítulo corto (para la lista de trabajos) */}
-      <P>
-        Microservicio backend para gestión de productos en Valhalla Gaming
-        Store.
-      </P>
+  return (
+    <Layout title={work.title}>
+      <Container>
+        {/* 1) Título + año */}
+        <Title>
+          <AnimatedText>{work.title}</AnimatedText>{' '}
+          <Badge>{work.meta.year}</Badge>
+        </Title>
 
-      {/* 3) Metadatos */}
-      <List ml={4} my={4}>
-        <ListItem>
-          <Meta>Plataforma</Meta>
-          <span>Backend · API REST</span>
-        </ListItem>
+        {/* 2) Subtítulo corto (para la lista de trabajos) */}
+        <P>
+          <AnimatedText>{work.description}</AnimatedText>
+        </P>
 
-        <ListItem>
-          <Meta>Stack</Meta>
-          <span>Spring Boot, JPA/Hibernate, MySQL</span>
-        </ListItem>
+        {/* 3) Metadatos */}
+        <List ml={4} my={4}>
+          <ListItem>
+            <Meta>{labels.platform}</Meta>
+            <span>{work.meta.platform}</span>
+          </ListItem>
 
-        <ListItem>
-          <Meta>Repositorio</Meta>
-          <Link
-            href="https://github.com/D4rckmker/Valhallags-Products"
-            target="_blank"
-          >
-            GitHub <ExternalLinkIcon mx="2px" />
-          </Link>
-        </ListItem>
+          <ListItem>
+            <Meta>{labels.stack}</Meta>
+            <span>{work.meta.stack}</span>
+          </ListItem>
 
-        <ListItem>
-          <Meta>Documentación</Meta>
-          <Link
-            href="https://deepwiki.com/D4rckmker/Valhallags-Products"
-            target="_blank"
-          >
-            DeepWiki <ExternalLinkIcon mx="2px" />
-          </Link>
-        </ListItem>
-      </List>
+          <ListItem>
+            <Meta>{work.meta.repoLabel}</Meta>
+            <Link
+              href="https://github.com/D4rckmker/Valhallags-Products"
+              target="_blank"
+            >
+              GitHub <ExternalLinkIcon mx="2px" />
+            </Link>
+          </ListItem>
 
-      {/* 4) Banner */}
-      <WorkImage
-        src="/images/works/valhalla-products/valhalla-products.png"
-        alt="Valhalla Products banner"
-      />
+          <ListItem>
+            <Meta>{work.meta.docsLabel}</Meta>
+            <Link
+              href="https://deepwiki.com/D4rckmker/Valhallags-Products"
+              target="_blank"
+            >
+              DeepWiki <ExternalLinkIcon mx="2px" />
+            </Link>
+          </ListItem>
+        </List>
 
-      {/* 5) Contenido principal */}
-      <Heading as="h4" fontSize={16} my={6}>
-        Descripción general
-      </Heading>
+        {/* 4) Banner */}
+        <WorkImage
+          src="/images/works/valhalla-products/valhalla-products.png"
+          alt="Valhalla Products banner"
+        />
 
-      <P>
-        Valhalla Products es un microservicio desarrollado como parte de la
-        arquitectura backend de Valhalla Gaming Store. Su responsabilidad
-        principal es la gestión del catálogo de productos, sirviendo como fuente
-        centralizada de datos para otras partes del sistema.
-      </P>
+        {/* 5) Contenido principal */}
+        <Heading as="h4" fontSize={16} my={6}>
+          <AnimatedText>{work.fullDescription.overviewTitle}</AnimatedText>
+        </Heading>
 
-      <P>
-        El proyecto fue diseñado para integrarse dentro de un ecosistema de
-        microservicios, manteniendo independencia, claridad estructural y
-        facilidad de mantenimiento.
-      </P>
+        {work.fullDescription.intro.map((paragraph, index) => (
+          <P key={index}>
+            <AnimatedText>{paragraph}</AnimatedText>
+          </P>
+        ))}
 
-      <Heading as="h4" fontSize={16} my={6}>
-        Aspectos técnicos
-      </Heading>
+        <Heading as="h4" fontSize={16} my={6}>
+          <AnimatedText>{work.fullDescription.technicalTitle}</AnimatedText>
+        </Heading>
 
-      <UnorderedList ml={4} my={4}>
-        <ListItem>
-          Microservicio desarrollado con Spring Boot siguiendo una arquitectura
-          por capas.
-        </ListItem>
-        <ListItem>
-          Exposición de endpoints REST para operaciones CRUD sobre productos.
-        </ListItem>
-        <ListItem>
-          Persistencia de datos mediante JPA/Hibernate con base de datos
-          relacional.
-        </ListItem>
-        <ListItem>
-          Manejo de validaciones, excepciones y estructuras DTO para control de
-          datos.
-        </ListItem>
-      </UnorderedList>
-    </Container>
-  </Layout>
-)
+        <UnorderedList ml={4} my={4}>
+          {work.technicalAspects.map((item, index) => (
+            <ListItem key={index}>
+              <AnimatedText>{item}</AnimatedText>
+            </ListItem>
+          ))}
+        </UnorderedList>
+      </Container>
+    </Layout>
+  )
+}
 
 export default Work
 export { getServerSideProps } from '../../components/chakra'

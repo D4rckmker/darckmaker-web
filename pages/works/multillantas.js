@@ -9,88 +9,78 @@ import {
 import Layout from '../../components/layouts/article'
 import { Title, WorkImage, Meta } from '../../components/work'
 import P from '../../components/paragraph'
+import { useTranslation } from '../../lib/translation-context'
+import AnimatedText from '../../components/animated-text'
 
-const Work = () => (
-  <Layout title="Multillantas VC">
-    <Container>
-      <Title>
-        Multillantas VC <Badge>2023</Badge>
-      </Title>
+const Work = () => {
+  const { t } = useTranslation()
+  const work = t('works.projects.multillantas')
+  const labels = t('works.metaLabels')
 
-      <P>
-        Aplicación web para gestión operativa, con autenticación y paneles de
-        administración.
-      </P>
+  return (
+    <Layout title={work.title}>
+      <Container>
+        <Title>
+          <AnimatedText>{work.title}</AnimatedText>{' '}
+          <Badge>{work.meta.year}</Badge>
+        </Title>
 
-      <List ml={4} my={4}>
-        <ListItem>
-          <Meta>Plataforma</Meta>
-          <span>Web</span>
-        </ListItem>
+        <P>
+          <AnimatedText>{work.description}</AnimatedText>
+        </P>
 
-        <ListItem>
-          <Meta>Stack</Meta>
-          <span>
-            Spring Boot (MVC), Thymeleaf, Spring Security, JPA/Hibernate, MySQL
-          </span>
-        </ListItem>
+        <List ml={4} my={4}>
+          <ListItem>
+            <Meta>{labels.platform}</Meta>
+            <span>{work.meta.platform}</span>
+          </ListItem>
 
-        <ListItem>
-          <Meta>Repositorio</Meta>
-          <span>Privado (proyecto colaborativo)</span>
-        </ListItem>
+          <ListItem>
+            <Meta>{labels.stack}</Meta>
+            <span>{work.meta.stack}</span>
+          </ListItem>
 
-        <ListItem>
-          <Meta>Estado</Meta>
-          <span>Proyecto académico / práctico</span>
-        </ListItem>
-      </List>
+          <ListItem>
+            <Meta>{labels.repository}</Meta>
+            <span>Privado (proyecto colaborativo)</span>
+          </ListItem>
 
-      <WorkImage
-        src="/images/works/multillantas-vc/spring-bot.jpg"
-        alt="Multillantas VC"
-      />
+          <ListItem>
+            <Meta>{work.meta.docsLabel}</Meta>
+            <span>Proyecto académico / práctico</span>
+          </ListItem>
+        </List>
 
-      <Heading as="h4" fontSize={16} my={6}>
-        Descripción general
-      </Heading>
+        <WorkImage
+          src="/images/works/multillantas-vc/spring-bot.jpg"
+          alt="Multillantas VC"
+        />
 
-      <P>
-        Multillantas VC es una aplicación web orientada a centralizar tareas de
-        gestión y control en un entorno administrativo. Se trabajó una
-        experiencia basada en paneles y formularios, priorizando orden,
-        consistencia visual y flujos claros para el usuario.
-      </P>
+        <Heading as="h4" fontSize={16} my={6}>
+          <AnimatedText>{work.fullDescription.overviewTitle}</AnimatedText>
+        </Heading>
 
-      <P>
-        La solución integra autenticación y navegación por secciones, con una
-        base preparada para escalar funcionalidades por módulos sin perder
-        mantenibilidad.
-      </P>
+        {work.fullDescription.intro.map((paragraph, index) => (
+          <P key={index}>
+            <AnimatedText>{paragraph}</AnimatedText>
+          </P>
+        ))}
 
-      <Heading as="h4" fontSize={16} my={6}>
-        Detalles técnicos
-      </Heading>
+        <Heading as="h4" fontSize={16} my={6}>
+          <AnimatedText>{work.fullDescription.technicalTitle}</AnimatedText>
+        </Heading>
 
-      <UnorderedList ml={4} my={4}>
-        <ListItem>
-          Aplicación Spring Boot con enfoque MVC y renderizado del lado servidor
-          (Thymeleaf).
-        </ListItem>
-        <ListItem>
-          Persistencia con JPA/Hibernate sobre base de datos MySQL.
-        </ListItem>
-        <ListItem>
-          Autenticación y control de acceso con Spring Security.
-        </ListItem>
-        <ListItem>
-          Estructura por capas (controladores / servicios / repositorios) para
-          mantener separación de responsabilidades.
-        </ListItem>
-      </UnorderedList>
-    </Container>
-  </Layout>
-)
+        <UnorderedList ml={4} my={4}>
+          {work.technicalAspects.map((item, index) => (
+            <ListItem key={index}>
+              <AnimatedText>{item}</AnimatedText>
+            </ListItem>
+          ))}
+        </UnorderedList>
+      </Container>
+    </Layout>
+  )
+}
 
 export default Work
 export { getServerSideProps } from '../../components/chakra'
