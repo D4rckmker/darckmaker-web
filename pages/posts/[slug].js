@@ -1,6 +1,8 @@
 import ArticleLayout from '../../components/layouts/article'
 import PostLayout from '../../components/post-layout'
 import { getPostBySlug, getPostSlugs } from '../../lib/posts'
+import { useTranslation } from '../../lib/translation-context'
+import AnimatedText from '../../components/animated-text'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import {
@@ -77,21 +79,30 @@ function MarkdownContent({ content }) {
 }
 
 export default function PostPage({ post }) {
+  const { locale } = useTranslation()
+
+  // Seleccionar contenido según el idioma actual
+  const currentPost = locale === 'en' ? post.en : post.es
+
   return (
-    <ArticleLayout title={post.frontmatter.title}>
+    <ArticleLayout title={currentPost.frontmatter.title}>
       <PostLayout
-        title={post.frontmatter.title}
-        description={post.frontmatter.description}
-        heroImage={post.frontmatter.heroImage}
+        title={currentPost.frontmatter.title}
+        description={currentPost.frontmatter.description}
+        heroImage={currentPost.frontmatter.heroImage}
+        createdAt={currentPost.frontmatter.createdAt}
+        updatedAt={currentPost.frontmatter.updatedAt}
+        tags={currentPost.frontmatter.tags}
+        readingTime={currentPost.readingTime}
       >
-        <MarkdownContent content={post.content} />
+        <MarkdownContent content={currentPost.content} />
       </PostLayout>
     </ArticleLayout>
   )
 }
 
 export async function getServerSideProps({ params, req }) {
-  const slugs = getPostSlugs().map(s => s.replace(/\.mdx$/, ''))
+  const slugs = getPostSlugs()
 
   // Si el slug no existe, retornar 404
   if (!slugs.includes(params.slug)) {
