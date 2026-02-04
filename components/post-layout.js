@@ -10,13 +10,17 @@ import {
 } from '@chakra-ui/react'
 import NextLink from 'next/link'
 import Image from 'next/image'
+import { useTranslation } from '../lib/translation-context'
+import AnimatedText from './animated-text'
 
 export default function PostLayout({
   title,
+  backButton,
   description,
   heroImage,
   children
 }) {
+  const { t } = useTranslation()
   const border = useColorModeValue('blackAlpha.200', 'whiteAlpha.300')
   const muted = useColorModeValue('gray.600', 'whiteAlpha.800')
 
@@ -24,7 +28,7 @@ export default function PostLayout({
     <Container>
       <Box mb={6}>
         <Link as={NextLink} href="/posts" color={muted}>
-          ← Volver a Publicaciones
+        <AnimatedText>{t('posts.backButton')}</AnimatedText>
         </Link>
       </Box>
 
