@@ -44,12 +44,14 @@ import { BioSection, BioYear } from '../components/bio'
 import Layout from '../components/layouts/article'
 import { GridItem } from '../components/grid-item'
 import Section from '../components/section'
+import AnimatedText from '../components/animated-text'
 
 // ─────────────────────────────────────────────────────────────────────────────
 // CONSTANTES CENTRALIZADAS
 // ─────────────────────────────────────────────────────────────────────────────
 // Todos los datos editables vienen de un solo archivo para fácil mantenimiento
-import { SKILLS, BIOGRAPHY, SOCIAL_LINKS, SITE_CONFIG } from '../lib/constants'
+import { SOCIAL_LINKS, SITE_CONFIG } from '../lib/constants'
+import { useTranslation } from '../lib/translation-context'
 
 // Imágenes
 import thumbTelegram from '../public/images/links/image.png'
@@ -98,8 +100,14 @@ const SocialLink = ({ href, icon, label }) => (
 // ─────────────────────────────────────────────────────────────────────────────
 
 const Home = () => {
+  const { t } = useTranslation()
+
   // Colores según el tema (extraídos para evitar llamar hooks dentro del JSX)
   const boxBg = useColorModeValue('whiteAlpha.500', 'whiteAlpha.200')
+
+  // Datos traducidos
+  const skills = t('skills')
+  const biography = t('biography')
 
   return (
     <Layout>
@@ -115,7 +123,7 @@ const Home = () => {
           bg={boxBg}
           css={{ backdropFilter: 'blur(10px)' }}
         >
-          Hola, soy un desarrollador basado en Perú.
+          <AnimatedText>{t('home.hero.greeting')}</AnimatedText>
         </Box>
 
         {/* ─────────────────────────────────────────────────────────────────
@@ -124,12 +132,14 @@ const Home = () => {
         <Box display={{ md: 'flex' }}>
           <Box flexGrow={1}>
             <Heading as="h2" variant="page-title">
-              Edson Ever David
+              <AnimatedText>{t('home.hero.firstName')}</AnimatedText>
             </Heading>
             <Heading as="h2" variant="page-title">
-              Quispe Salas
+              <AnimatedText>{t('home.hero.lastName')}</AnimatedText>
             </Heading>
-            <p>iOS Developer Junior · Software Developer</p>
+            <p>
+              <AnimatedText>{t('home.hero.role')}</AnimatedText>
+            </p>
           </Box>
 
           {/* Foto de perfil */}
@@ -165,26 +175,16 @@ const Home = () => {
             ───────────────────────────────────────────────────────────────── */}
         <Section delay={0.1}>
           <Heading as="h3" variant="section-title">
-            Trabajo
+            <AnimatedText>{t('home.work.title')}</AnimatedText>
           </Heading>
           <Paragraph>
-            Soy un Desarrollador de Software Junior con enfoque en desarrollo
-            iOS, egresado de Computación e Informática, con experiencia práctica
-            en la creación de aplicaciones móviles y soluciones de software
-            orientadas a necesidades reales de negocio.
+            <AnimatedText>{t('home.work.p1')}</AnimatedText>
           </Paragraph>
           <Paragraph>
-            He desarrollado aplicaciones iOS utilizando Swift y he trabajado con
-            APIs REST y tecnologías backend. También tengo experiencia con
-            herramientas empresariales como SAP y Microsoft Excel para la
-            gestión y análisis de información, además de conocimientos en diseño
-            de interfaces y desarrollo centrado en el usuario.
+            <AnimatedText>{t('home.work.p2')}</AnimatedText>
           </Paragraph>
           <Paragraph>
-            En proyectos y entornos de trabajo, he fortalecido mi capacidad para
-            trabajar en equipo, analizar requerimientos y resolver problemas
-            técnicos de forma eficiente, manteniendo un enfoque en soluciones
-            claras, mantenibles y orientadas a resultados.
+            <AnimatedText>{t('home.work.p3')}</AnimatedText>
           </Paragraph>
 
           <Box align="center" my={4}>
@@ -195,7 +195,7 @@ const Home = () => {
               rightIcon={<ChevronRightIcon />}
               colorScheme="teal"
             >
-              Ver portafolio
+              <AnimatedText>{t('home.work.button')}</AnimatedText>
             </Button>
           </Box>
         </Section>
@@ -207,16 +207,22 @@ const Home = () => {
             Para editar las habilidades, modifica constants.js */}
         <Section delay={0.15}>
           <Heading as="h3" variant="section-title">
-            Habilidades
+            <AnimatedText>{t('home.skills.title')}</AnimatedText>
           </Heading>
 
-          <SkillGroup title="Lenguajes" skills={SKILLS.lenguajes} />
-          <SkillGroup title="Desarrollo móvil" skills={SKILLS.movil} />
-          <SkillGroup title="Backend / Web" skills={SKILLS.backend} />
-          <SkillGroup title="Herramientas" skills={SKILLS.herramientas} />
           <SkillGroup
-            title="Habilidades interpersonales"
-            skills={SKILLS.blandas}
+            title={t('home.skills.languages')}
+            skills={skills.languages}
+          />
+          <SkillGroup title={t('home.skills.mobile')} skills={skills.mobile} />
+          <SkillGroup
+            title={t('home.skills.backend')}
+            skills={skills.backend}
+          />
+          <SkillGroup title={t('home.skills.tools')} skills={skills.tools} />
+          <SkillGroup
+            title={t('home.skills.soft')}
+            skills={skills.soft}
             isLast
           />
         </Section>
@@ -228,21 +234,21 @@ const Home = () => {
             Para editar la biografía, modifica constants.js */}
         <Section delay={0.2}>
           <Heading as="h3" variant="section-title">
-            Biografía
+            <AnimatedText>{t('home.biography.title')}</AnimatedText>
           </Heading>
 
-          {/* Renderiza cada entrada de la biografía desde constants.js */}
-          {BIOGRAPHY.map((item, index) => (
+          {/* Renderiza cada entrada de la biografía desde traducciones */}
+          {biography.map((item, index) => (
             <BioSection key={index}>
               <BioYear>{item.year}</BioYear>
-              {item.text}
+              <AnimatedText>{item.text}</AnimatedText>
             </BioSection>
           ))}
 
           {/* Año actual dinámico (siempre muestra el año en curso) */}
           <BioSection>
             <BioYear>{new Date().getFullYear()}</BioYear>
-            Trabajo de Freelance y proyectos personales.
+            <AnimatedText>{t('home.biography.currentYear')}</AnimatedText>
           </BioSection>
         </Section>
 
@@ -251,11 +257,10 @@ const Home = () => {
             ───────────────────────────────────────────────────────────────── */}
         <Section delay={0.3}>
           <Heading as="h3" variant="section-title">
-            Intereses
+            <AnimatedText>{t('home.interests.title')}</AnimatedText>
           </Heading>
           <Paragraph>
-            Desarrollo iOS, construcción de productos, buenas prácticas de
-            código, diseño de interfaces, aprendizaje continuo y tecnología.
+            <AnimatedText>{t('home.interests.description')}</AnimatedText>
           </Paragraph>
         </Section>
 
@@ -266,7 +271,7 @@ const Home = () => {
             Para editar los links, modifica constants.js */}
         <Section delay={0.35}>
           <Heading as="h3" variant="section-title">
-            En la web
+            <AnimatedText>{t('home.social.title')}</AnimatedText>
           </Heading>
 
           <List>
@@ -305,18 +310,20 @@ const Home = () => {
               AGRADECIMIENTOS
               ───────────────────────────────────────────────────────────────── */}
           <Heading as="h3" variant="section-title">
-            Agradecimientos
+            <AnimatedText>{t('home.credits.title')}</AnimatedText>
           </Heading>
           <p>
-            Este sitio web se basa en el trabajo de{' '}
-            <Link
-              as={NextLink}
-              href="https://www.craftz.dog/"
-              passHref
-              scroll={false}
-            >
-              Takuya Matsuyama
-            </Link>
+            <AnimatedText>
+              {t('home.credits.text')}{' '}
+              <Link
+                as={NextLink}
+                href="https://www.craftz.dog/"
+                passHref
+                scroll={false}
+              >
+                {t('home.credits.authorName')}
+              </Link>
+            </AnimatedText>
           </p>
 
           {/* ─────────────────────────────────────────────────────────────────
@@ -324,11 +331,10 @@ const Home = () => {
               ─────────────────────────────────────────────────────────────────
               ✨ Usa SITE_CONFIG.email desde lib/constants.js */}
           <Heading as="h3" variant="section-title" mt={8}>
-            Contacto
+            <AnimatedText>{t('home.contact.title')}</AnimatedText>
           </Heading>
           <p>
-            Si deseas contactarme para oportunidades laborales o proyectos,
-            puedes escribirme por correo.
+            <AnimatedText>{t('home.contact.description')}</AnimatedText>
           </p>
 
           <Box align="center" my={4}>
@@ -339,7 +345,7 @@ const Home = () => {
               leftIcon={<EmailIcon />}
               colorScheme="teal"
             >
-              Enviar correo
+              <AnimatedText>{t('home.contact.button')}</AnimatedText>
             </Button>
           </Box>
         </Section>

@@ -18,22 +18,30 @@ import {
   Divider,
   Button
 } from '@chakra-ui/react'
+import { useTranslation } from '../lib/translation-context'
+import AnimatedText from '../components/animated-text'
 
 const NotFound = () => {
+  const { t } = useTranslation()
+
   return (
     <Container>
       {/* Título principal */}
-      <Heading as="h1">No encontrado</Heading>
+      <Heading as="h1">
+        <AnimatedText>{t('notFound.title')}</AnimatedText>
+      </Heading>
 
       {/* Mensaje descriptivo */}
-      <Text>La página que estás buscando no fue encontrada.</Text>
+      <Text>
+        <AnimatedText>{t('notFound.description')}</AnimatedText>
+      </Text>
 
       <Divider my={6} />
 
       {/* Botón para regresar al inicio */}
       <Box my={6} align="center">
         <Button as={NextLink} href="/" colorScheme="teal" size="lg">
-          Regresar a la página principal
+          <AnimatedText>{t('notFound.button')}</AnimatedText>
         </Button>
       </Box>
     </Container>

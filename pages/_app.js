@@ -19,6 +19,7 @@ import Fonts from '../components/fonts'
 import { AnimatePresence } from 'framer-motion'
 import Chakra from '../components/chakra'
 import { Analytics } from '@vercel/analytics/react'
+import { TranslationProvider } from '../lib/translation-context'
 
 // ─────────────────────────────────────────────────────────────────────────────
 // CONFIGURACIÓN DEL HISTORIAL DEL NAVEGADOR
@@ -45,16 +46,22 @@ function Website({ Component, pageProps, router }) {
     // Envuelve toda la app con el sistema de diseño Chakra UI.
     // Las 'cookies' se pasan para persistir el tema (claro/oscuro) en el servidor.
     <Chakra cookies={pageProps.cookies}>
-      {/* Carga las fuentes personalizadas (M PLUS Rounded 1c) */}
-      <Fonts />
-
       {/* ─────────────────────────────────────────────────────────────────────
+          TRANSLATION PROVIDER
+          ─────────────────────────────────────────────────────────────────────
+          Provee el contexto de internacionalización para toda la aplicación.
+          Maneja el estado del idioma y la función de traducción. */}
+      <TranslationProvider>
+        {/* Carga las fuentes personalizadas (M PLUS Rounded 1c) */}
+        <Fonts />
+
+        {/* ─────────────────────────────────────────────────────────────────────
           LAYOUT PRINCIPAL
           ─────────────────────────────────────────────────────────────────────
           Contiene: Navbar, Footer, PetBox (gatitos)
           Este layout es PERSISTENTE - no se desmonta al cambiar de página */}
-      <Layout router={router}>
-        {/* ─────────────────────────────────────────────────────────────────────
+        <Layout router={router}>
+          {/* ─────────────────────────────────────────────────────────────────────
             ANIMACIONES DE TRANSICIÓN
             ─────────────────────────────────────────────────────────────────────
             AnimatePresence de Framer Motion permite animar componentes
@@ -63,24 +70,25 @@ function Website({ Component, pageProps, router }) {
             - mode="wait": Espera a que salga el componente antes de montar el nuevo
             - initial={true}: Anima la primera carga de página
             - onExitComplete: Se ejecuta al terminar la animación de salida */}
-        <AnimatePresence
-          mode="wait"
-          initial={true}
-          onExitComplete={() => {
-            // Scroll al inicio cuando termina la animación de salida
-            if (typeof window !== 'undefined') {
-              window.scrollTo({ top: 0 })
-            }
-          }}
-        >
-          {/* El 'key' basado en la ruta fuerza el re-montaje del componente
+          <AnimatePresence
+            mode="wait"
+            initial={true}
+            onExitComplete={() => {
+              // Scroll al inicio cuando termina la animación de salida
+              if (typeof window !== 'undefined') {
+                window.scrollTo({ top: 0 })
+              }
+            }}
+          >
+            {/* El 'key' basado en la ruta fuerza el re-montaje del componente
               cuando cambia la URL, activando las animaciones */}
-          <Component {...pageProps} key={router.route} />
-        </AnimatePresence>
+            <Component {...pageProps} key={router.route} />
+          </AnimatePresence>
 
-        {/* Analytics de Vercel para tracking de visitas */}
-        <Analytics />
-      </Layout>
+          {/* Analytics de Vercel para tracking de visitas */}
+          <Analytics />
+        </Layout>
+      </TranslationProvider>
     </Chakra>
   )
 }
